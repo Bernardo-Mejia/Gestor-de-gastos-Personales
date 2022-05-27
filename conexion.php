@@ -1,5 +1,5 @@
 <?php
 	
-	$mysqli = new mysqli("localhost", "root", "", "sistemagastos_ingresos");
+	$mysqli = new mysqli("localhost", "root", "", "gastos_ingresos");
 	
 ?>
