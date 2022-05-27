@@ -36,7 +36,7 @@
 			
 			
 			} else {
-			echo "NO existe usuario";
+			echo "<h1>NO existe usuario</h1>";
 		}
 		
 		
@@ -87,11 +87,11 @@
                                             <!-- <div class="form-group">
                                                 <div class="custom-control custom-checkbox"><input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Remember password</label></div>
 											</div> -->
-                                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><a class="small" href="password.html">Forgot Password?</a>
+                                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><a class="small" href="#">¿Olvidaste tu contraseña?</a>
 											<button type="submit" class="btn btn-primary">Login</button></div>
 										</form>
                                     </div>
-<!-- 
+                                    <!-- 
                                     <div class="card-footer text-center py-3">
                                         <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
                                     </div>

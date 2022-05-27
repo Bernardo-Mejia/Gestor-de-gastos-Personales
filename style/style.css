@@ -146,6 +146,12 @@
     color: var(--second-color);
     background-color: var(--main-modal-color);
   }
+
+  .sesion-name{
+    color: white;
+    margin-top: 20px;
+    font-size: 20px;
+  }
   
   /* Botón top */
   .scroll-top-btn {

@@ -20,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>INTELIGENCIA DE NEGOCIOS</title>
   <!-- bootstrap -->
-  <link href="css/styles.css" rel="stylesheet" />
+  <!-- <link href="./style/b_styles.css" rel="stylesheet" /> -->
   <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
   <!--  -->
@@ -42,7 +42,13 @@
     <nav class="menu">
       <a href="#" data-scroll-spy>GASTOS</a>
       <a href="#" data-scroll-spy>INGRESOS</a>
+      <?php if($tipo_usuario == 2) { ?>
+        <!-- <p>aber</p> -->
+        <a href="#" data-scroll-spy>CATEGORÍAS</a>
+        <a href="#" data-scroll-spy>USUARIOS</a>
+      <?php } ?>
       <a href="logout.php" data-scroll-spy>CERRAR SESIÓN</a>
+      <h2 class="sesion-name">Sesión iniciada de <?php echo $nombre; ?></h2>
     </nav>
   </aside>
   <main>
