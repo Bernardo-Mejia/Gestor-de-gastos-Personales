@@ -44,7 +44,7 @@
       <a href="#" data-scroll-spy>INGRESOS</a>
       <?php if($tipo_usuario == 2) { ?>
         <!-- <p>aber</p> -->
-        <a href="#" data-scroll-spy>CATEGORÍAS</a>
+        <a href="./categorias/index.php" data-scroll-spy>CATEGORÍAS</a>
         <a href="#" data-scroll-spy>USUARIOS</a>
       <?php } ?>
       <a href="logout.php" data-scroll-spy>CERRAR SESIÓN</a>
