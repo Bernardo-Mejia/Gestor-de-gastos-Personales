@@ -3,6 +3,9 @@
 	require "conexion.php";
 	
 	session_start();
+
+    $autor="Bernardo Gabriel Mejía Pérez";
+    $fechaActual = date('d-m-Y');
 	
 	if($_POST){
 		
@@ -30,13 +33,15 @@
 				
 			} else {
 			
-			echo "La contraseña no coincide";
+			echo "<h4>La contraseña no coincide</h4>";
 			
 			}
 			
 			
 			} else {
-			echo "<h1>NO existe usuario</h1>";
+			echo "<h4>
+                    NO existe el usuario
+                  </h4>";
 		}
 		
 		
@@ -55,7 +60,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-
+        <link rel="stylesheet" href="./style/index.css">
         <!-- particles -->
         <!-- Fuentes -->
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,900&display=swap" rel="stylesheet">
@@ -70,7 +75,7 @@
     <body class="bg-primary">
         <!-- ID Particles.js -->
         <div id="particles-js"></div>
-        <header class="contenedor header">
+        
         
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
@@ -106,7 +111,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Bernardo Mejía 2022</div>
+                            <div class="text-muted">Copyright &copy; <?php echo $autor.' <b>-</b> '.$fechaActual;?></div>
                             <div>
                                 <a href="#">Políticas de privacidad</a>
                                 &middot;
