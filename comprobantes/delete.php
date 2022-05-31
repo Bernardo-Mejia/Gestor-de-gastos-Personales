@@ -8,9 +8,9 @@ if(!isset($_SESSION['id'])){
 
 $con=conectar();
 
-$idCategoria=$_GET['id'];
+$idTipo_comp=$_GET['id'];
 
-$sql="DELETE FROM categorias WHERE idCategoria='$idCategoria'";
+$sql="DELETE FROM tipo_comp WHERE idTipo_comp='$idTipo_comp'";
 $query=mysqli_query($con,$sql);
 
     if($query){

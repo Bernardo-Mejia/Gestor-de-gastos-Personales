@@ -2,11 +2,11 @@
 include("conexion.php");
 $con=conectar();
 
-$idCategoria=$_POST['idCategoria'];
-$Categoria=$_POST['Categoria'];
+$idTipo_comp=$_POST['idTipo_comp'];
+$Tipo_compra=$_POST['Tipo_compra'];
 
 
-$sql="INSERT INTO categorias VALUES('$idCategoria','$Categoria')";
+$sql="INSERT INTO tipo_comp VALUES('$idTipo_comp','$Tipo_compra')";
 $query= mysqli_query($con,$sql);
 
 if($query){

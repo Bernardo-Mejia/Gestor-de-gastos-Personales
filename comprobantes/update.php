@@ -3,10 +3,10 @@
 include("conexion.php");
 $con=conectar();
 
-$idCategoria=$_POST['idCategoria'];
-$Categoria=$_POST['Categoria'];
+$idTipo_comp=$_POST['idTipo_comp'];
+$Tipo_compra=$_POST['Tipo_compra'];
 
-$sql="UPDATE categorias SET  Categoria='$Categoria' WHERE idCategoria='$idCategoria'";
+$sql="UPDATE tipo_comp SET  Tipo_compra='$Tipo_compra' WHERE idTipo_comp='$idTipo_comp'";
 $query=mysqli_query($con,$sql);
 
     if($query){

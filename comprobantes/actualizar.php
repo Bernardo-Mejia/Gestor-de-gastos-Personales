@@ -16,7 +16,7 @@
 
     $id=$_GET['id'];
 
-    $sql="SELECT * FROM categorias WHERE idCategoria='$id'";
+    $sql="SELECT * FROM tipo_comp WHERE idTipo_comp='$id'";
     $query=mysqli_query($con,$sql);
 
     $row=mysqli_fetch_array($query);
@@ -37,9 +37,9 @@
                 <div class="container mt-5">
                     <form action="update.php" method="POST">
                     
-                                <input type="hidden" name="idCategoria" value="<?php echo $row['idCategoria']  ?>">
+                                <input type="hidden" name="idTipo_comp" value="<?php echo $row['idTipo_comp']  ?>">
                                 
-                                <input type="text" class="form-control mb-3" name="Categoria" placeholder="Nuevo nombre de categoría" value="<?php echo $row['Categoria']  ?>">
+                                <input type="text" class="form-control mb-3" name="Tipo_compra" placeholder="Nuevo nombre del comprobante" value="<?php echo $row['Tipo_compra']  ?>">
                                 
                             <input type="submit" class="btn btn-primary btn-block" value="Actualizar">
                     </form>

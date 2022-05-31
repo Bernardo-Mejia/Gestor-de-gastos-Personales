@@ -17,7 +17,7 @@
 
 
 
-    $sql="SELECT *  FROM categorias";
+    $sql="SELECT *  FROM tipo_comp";
     $query=mysqli_query($con,$sql);
 ?>
 
@@ -41,11 +41,11 @@
                     <div class="row"> 
                         
                         <div class="col-md-3">
-                            <h1>Categorías</h1>
+                            <h1>Comprobantes</h1>
                                 <form action="insertar.php" method="POST">
 
-                                    <input type="number" class="form-control mb-3" name="idCategoria" placeholder="ID de la categoría" required>
-                                    <input type="text" class="form-control mb-3" name="Categoria" placeholder="Categoría" required>
+                                    <input type="number" class="form-control mb-3" name="idTipo_comp" placeholder="ID del comprobante" required>
+                                    <input type="text" class="form-control mb-3" name="Tipo_compra" placeholder="Tipo de comprobante" required>
                                     
                                     <input type="submit" class="btn btn-primary">
                                 </form>
@@ -56,8 +56,8 @@
                             <table class="table" >
                                 <thead class="table-success table-striped" >
                                     <tr class="center">
-                                        <th>ID de categoría</th>
-                                        <th>Nombre de categoría</th>
+                                        <th>ID de comprobante</th>
+                                        <th>Nombre de comprobante</th>
                                         <th>-</th>
                                         <th>-</th>
                                     </tr>
@@ -68,10 +68,10 @@
                                             while($row=mysqli_fetch_array($query)){
                                         ?>
                                             <tr class="center">
-                                                <th><?php  echo $row['idCategoria']?></th>
-                                                <th><?php  echo $row['Categoria']?></th>  
-                                                <th><a href="actualizar.php?id=<?php echo $row['idCategoria'] ?>" class="btn btn-info">Editar</a></th>
-                                                <th><a href="delete.php?id=<?php echo $row['idCategoria'] ?>" class="btn btn-danger">Eliminar</a></th>                                        
+                                                <th><?php  echo $row['idTipo_comp']?></th>
+                                                <th><?php  echo $row['Tipo_compra']?></th>  
+                                                <th><a href="actualizar.php?id=<?php echo $row['idTipo_comp'] ?>" class="btn btn-info">Editar</a></th>
+                                                <th><a href="delete.php?id=<?php echo $row['idTipo_comp'] ?>" class="btn btn-danger">Eliminar</a></th>                                        
                                             </tr>
                                         <?php 
                                             }
