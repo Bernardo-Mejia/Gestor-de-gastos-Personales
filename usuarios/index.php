@@ -1,5 +1,4 @@
 <?php 
-    // CATEGORÍAS
     include("conexion.php");
     session_start();
 	
@@ -17,14 +16,14 @@
 
 
 
-    $sql="SELECT *  FROM categorias";
+    $sql="SELECT *  FROM usuarios";
     $query=mysqli_query($con,$sql);
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Categorías</title>
+        <title>Usuarios</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="./style/estilos_categoria.css" rel="stylesheet">
@@ -41,11 +40,14 @@
                     <div class="row"> 
                         
                         <div class="col-md-3">
-                            <h1>Categorías</h1>
+                            <h1>Usuarios</h1>
                                 <form action="insertar.php" method="POST">
 
-                                    <input type="number" class="form-control mb-3" name="idCategoria" placeholder="ID de la categoría" required>
-                                    <input type="text" class="form-control mb-3" name="Categoria" placeholder="Categoría" required>
+                                    <input type="text" class="form-control mb-3" name="idUsuario" placeholder="ID de Usuario" required>
+                                    <input type="text" class="form-control mb-3" name="Nombre_Usuario" placeholder="Nombre completo" required>
+                                    <input type="number" class="form-control mb-3" name="Edad" placeholder="Edad" required>
+                                    <input type="text" class="form-control mb-3" name="Genero" placeholder="Género" required>
+                                    <input type="text" class="form-control mb-3" name="tipo_usuario" placeholder="Tipo de usuario" required>
                                     
                                     <input type="submit" class="btn btn-primary">
                                 </form>
@@ -56,8 +58,11 @@
                             <table class="table" >
                                 <thead class="table-success table-striped" >
                                     <tr class="center">
-                                        <th>ID de categoría</th>
-                                        <th>Nombre de categoría</th>
+                                        <th>ID de usuario</th>
+                                        <th>Nombre de Usuario</th>
+                                        <th>Edad</th>
+                                        <th>Género</th>
+                                        <th>Tipo de usuario</th>
                                         <th>-</th>
                                         <th>-</th>
                                     </tr>
@@ -68,10 +73,13 @@
                                             while($row=mysqli_fetch_array($query)){
                                         ?>
                                             <tr class="center">
-                                                <th><?php  echo $row['idCategoria']?></th>
-                                                <th><?php  echo $row['Categoria']?></th>  
-                                                <th><a href="actualizar.php?id=<?php echo $row['idCategoria'] ?>" class="btn btn-info">Editar</a></th>
-                                                <th><a href="delete.php?id=<?php echo $row['idCategoria'] ?>" class="btn btn-danger">Eliminar</a></th>                                        
+                                                <th><?php  echo $row['idUsuario']?></th>
+                                                <th><?php  echo $row['Nombre_Usuario']?></th>  
+                                                <th><?php  echo $row['Edad']?></th>  
+                                                <th><?php  echo $row['Genero']?></th>  
+                                                <th><?php  echo $row['tipo_usuario']?></th>  
+                                                <th><a href="actualizar.php?id=<?php echo $row['idUsuario'] ?>" class="btn btn-info">Editar</a></th>
+                                                <th><a href="delete.php?id=<?php echo $row['idUsuario'] ?>" class="btn btn-danger">Eliminar</a></th>                                        
                                             </tr>
                                         <?php 
                                             }
@@ -81,7 +89,6 @@
                         </div>
                     </div>  
             </div>
-        <!-- <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script> -->
         <script src="../scripts/particles/js/particles.min.js"></script>
     </body>
 </html>

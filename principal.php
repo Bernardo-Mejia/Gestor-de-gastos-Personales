@@ -31,7 +31,7 @@
 
 <body data-dark>
   <header class="header">
-    <h1>SISTEMA DE CONTROL DE GASTOS</h1>
+    <h1>SISTEMA DE CONTROL DE GASTOS PERSONALES</h1>
   </header>
   <button class="panel-btn hamburger hamburger--elastic" type="button">
     <span class="hamburger-box">
@@ -45,7 +45,8 @@
       <?php if($tipo_usuario == 2) { ?>
         <!-- <p>aber</p> -->
         <a href="./categorias/index.php" data-scroll-spy>CATEGORÍAS</a>
-        <a href="#" data-scroll-spy>USUARIOS</a>
+        <a href="./usuarios/index.php" data-scroll-spy>USUARIOS</a>
+        <a href="./comprobantes/index.php" data-scroll-spy>COMPROBANTES</a>
       <?php } ?>
       <a href="logout.php" data-scroll-spy>CERRAR SESIÓN</a>
       <h2 class="sesion-name">Sesión iniciada de <?php echo $nombre; ?></h2>
@@ -53,10 +54,11 @@
   </aside>
   <main>
     <section id="seccion1" class="section" data-scroll-spy>
-      
+      <h2>INGRESOS</h2>
     </section>
     <section id="seccion2" class="section" data-scroll-spy>
-     
+      <h2>GASTOS</h2>
+    </seccion>
   </main>
   <button class="scroll-top-btn hidden">&#11014;</button>
 </body>

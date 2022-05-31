@@ -16,16 +16,16 @@
 
     $id=$_GET['id'];
 
-    $sql="SELECT * FROM categorias WHERE idCategoria='$id'";
+    $sql="SELECT * FROM usuarios WHERE idUsuario='$id'";
     $query=mysqli_query($con,$sql);
 
     $row=mysqli_fetch_array($query);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
-        <title>Actualizar categoría</title>
+        <title>Actualizar usuario</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="./style/estilos_categoria.css" rel="stylesheet">
@@ -37,9 +37,16 @@
                 <div class="container mt-5">
                     <form action="update.php" method="POST">
                     
-                                <input type="hidden" name="idCategoria" value="<?php echo $row['idCategoria']  ?>">
+                                <input type="hidden" name="idUsuario" value="<?php echo $row['idUsuario']  ?>">
                                 
-                                <input type="text" class="form-control mb-3" name="Categoria" placeholder="Nuevo nombre de categoría" value="<?php echo $row['Categoria']  ?>">
+                                <input type="text" class="form-control mb-3" name="Nombre_Usuario" placeholder="Nuevo nombre de Usuario" value="<?php echo $row['Nombre_Usuario']  ?>">
+
+                                <input type="number" class="form-control mb-3" name="Edad" placeholder="Nueva Edad" value="<?php echo $row['Edad']  ?>">
+
+                                <input type="text" class="form-control mb-3" name="Genero" placeholder="Género" value="<?php echo $row['Genero']  ?>">
+
+                                <input type="text" class="form-control mb-3" name="tipo_usuario" placeholder="Tipo de usuario" value="<?php echo $row['tipo_usuario']  ?>">
+
                                 
                             <input type="submit" class="btn btn-primary btn-block" value="Actualizar">
                     </form>
