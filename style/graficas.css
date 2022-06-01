@@ -1,0 +1,10 @@
+/* GRÁFICAS */
+
+.ingreso-grafica, .gasto-grafica{
+    display: flex;
+}
+
+#ingreso_frecuencia, #ingreso_barra, #gasto_categoria, #gasto_semana{
+    text-align: center;
+    display: inline-block;
+}

@@ -58,10 +58,13 @@
   h1{
     color: var(--title);
   }
+
+  .font{
+    font-family:BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
   
   .section {
-    padding: 2rem;
-    padding-top: 4rem;
+    padding: 0px 2rem;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
@@ -69,6 +72,10 @@
     min-height: 100vh;
     text-align: center;
   }
+    .gastos{
+      padding-top: 4rem;
+    }
+
   /* 1051 uno menos y se ve feo */
   .panel {
     position: fixed;
