@@ -2,9 +2,20 @@
 
 .ingreso-grafica, .gasto-grafica{
     display: flex;
+    /* flex-wrap:wrap; */
+    justify-content: center;
+    align-items: center;
 }
 
 #ingreso_frecuencia, #ingreso_barra, #gasto_categoria, #gasto_semana{
     text-align: center;
     display: inline-block;
+}
+
+@media all and (max-width:1262px){
+    .ingreso-grafica, .gasto-grafica{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    } 
 }

@@ -57,6 +57,7 @@
 
   h1{
     color: var(--title);
+    /* color: red; */
   }
 
   .font{
