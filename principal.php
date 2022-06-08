@@ -5,11 +5,15 @@
 	if(!isset($_SESSION['id'])){
 		header("Location: index.php");
 	}
+
+  $conectar=mysqli_connect('localhost', 'root', '', 'gastos_ingresos');
 	
 	$nombre = $_SESSION['nombre'];
 	$tipo_usuario = $_SESSION['tipo_usuario'];
+  $idUsuario = $_SESSION['idUsuario'];
 	
-	$sql = "select * from ingresos where idIngreso=(SELECT max(idingreso) from ingresos where Usuario_idUsuario=1000)";
+	// $sql = "select * from ingresos where idIngreso=(SELECT max(idingreso) from ingresos where Usuario_idUsuario=1000)";
+  
 ?>
 
 <!DOCTYPE html>
@@ -94,38 +98,170 @@
       <h3 class="font">Frecuencia de ingresos</h3>
       <div class="ingreso-grafica">
         <div id="ingreso_frecuencia"></div>
-        <div id="ingreso_barra"></div>
+        <div class="caja">
+          <!-- <h3 class="font">Gastos por semana</h3> -->
+          <div id="ingreso_total">
+            <?php
+              $sql_ingreso = "SELECT SUM(Ingreso),count(*) from ingresos where Usuario_idUsuario = $idUsuario";
+              $resultado_ingreso = mysqli_query($conectar, $sql_ingreso);
+              $mostrar_ingreso = mysqli_fetch_array($resultado_ingreso);
+            ?>
+            <b>Ingresos totales: $<span><?php echo $mostrar_ingreso['SUM(Ingreso)'] ?></span></b>
+            <br>
+            <br>
+            <b>Cantidad de gastos: <span><?php echo $mostrar_ingreso['count(*)'] ?></span></b>
+          </div>
+        </div>
       </div>
+
+        <!-- ÚLTIMO INGRESO -->
+      <?php 
+        if(($mostrar_ingreso['SUM(Ingreso)']) > 0){
+      ?>
+      <h3>Último ingreso registrado</h3>
+      <div class="table">
+        <table>
+          <!-- select idIngreso, Ingreso, Fecha, Hora from ingresos where idIngreso=(SELECT max(idingreso) from ingresos where Usuario_idUsuario=1000); -->
+        <thead>
+          <tr>
+            <th>ID de ingreso</th>
+            <th>Cantidad</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <?php
+              $sql_ultimoIngreso = "SELECT idIngreso, Ingreso, Fecha, Hora from ingresos where idIngreso=(SELECT max(idingreso) from ingresos where Usuario_idUsuario=$idUsuario);";
+              $resultado_ultimoIngreso = mysqli_query($conectar, $sql_ultimoIngreso);
+              $mostrar_ultimoIngreso = mysqli_fetch_array($resultado_ultimoIngreso);
+            ?>
+          <tr>
+            <td><?php echo $mostrar_ultimoIngreso['idIngreso'] ?></td>
+            <td><?php echo $mostrar_ultimoIngreso['Ingreso'] ?></td>
+            <td><?php echo $mostrar_ultimoIngreso['Fecha'] ?></td>
+            <td><?php echo $mostrar_ultimoIngreso['Hora'] ?></td>
+          </tr>
+        </tbody>
+
+        </table>
+      </div>
+      <?php
+        }
+      ?>
     </section>
 
     <section id="seccion2" class="section gastos" data-scroll-spy>
       <h2>GASTOS</h2>
       <!-- PLOTLY -->
-      <h3 class="font">Gastos por categoría</h3>
+      <!-- <h3 class="font">Gastos por categoría</h3> -->
       <div class="gasto-grafica">
         <div id="gasto_categoria"></div>
         
         <div class="caja">
-          <h3 class="font">Gastos por semana</h3>
-          <div id="gasto_semana"></div>
+          <!-- <h3 class="font">Gastos por semana</h3> -->
+          <div id="gasto_total">
+          <?php
+              $sql_gasto = "SELECT SUM(subtotal),count(*) from gastos where Usuario_idUsuario = $idUsuario;";
+              $resultado_gasto = mysqli_query($conectar, $sql_gasto);
+              $mostrar_gasto = mysqli_fetch_array($resultado_gasto);
+            ?>
+            <b>Gasto total: $<span><?php echo $mostrar_gasto['SUM(subtotal)'] ?></span></b>
+            <br>
+            <br>
+            <b>Cantidad de gastos: <span><?php echo $mostrar_gasto['count(*)'] ?></span></b>
+          </div>
         </div>
       </div>
+
+      <?php 
+        if(($mostrar_gasto['SUM(subtotal)']) > 0){
+      ?>
+      <h3>Último gasto realizado</h3>
+      <div class="table">
+        <table>
+          <!-- select ID, Establecimiento, Fecha, Hora, producto_servicio, Monto, cant, subtotal from gastos where id=(SELECT max(id) from gastos where Usuario_idUsuario=1000); -->
+        <thead>
+          <tr>
+            <th>ID de gasto</th>
+            <th>Establecimiento</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Producto o servicio</th>
+            <th>Precio unitario</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <?php
+              $sql_ultimoGasto = "SELECT ID, Establecimiento, Fecha, Hora, producto_servicio, Monto, cant, subtotal from gastos where id=(SELECT max(id) from gastos where Usuario_idUsuario=$idUsuario);";
+              $resultado_ultimoGasto = mysqli_query($conectar, $sql_ultimoGasto);
+              $mostrar_ultimoGasto = mysqli_fetch_array($resultado_ultimoGasto);
+            ?>
+          <tr>
+            <td><?php echo $mostrar_ultimoGasto['ID'] ?></td>
+            <td><?php echo $mostrar_ultimoGasto['Establecimiento'] ?></td>
+            <td><?php echo $mostrar_ultimoGasto['Fecha'] ?></td>
+            <td><?php echo $mostrar_ultimoGasto['Hora'] ?></td>
+            <td><?php echo $mostrar_ultimoGasto['producto_servicio'] ?></td>
+            <td><?php echo $mostrar_ultimoGasto['Monto'] ?></td>
+            <td><?php echo $mostrar_ultimoGasto['cant'] ?></td>
+            <td><?php echo $mostrar_ultimoGasto['subtotal'] ?></td>
+          </tr>
+        </tbody>
+
+        </table>
+      </div>
+      <?php
+        }
+      ?>
+
     </seccion>
   </main>
   <button class="scroll-top-btn hidden">&#11014;</button>
 
   <script>
         /*-----------INGRESOS-----------*/
-        Plotly.newPlot("ingreso_frecuencia", /* JSON object */ {
-            "data": [{ "y": [1, 2, 3] }],
-            "layout": { "width": 500, "height": 400}
+        
+        Plotly.newPlot("ingreso_frecuencia",{
+            "data": [{ "y": [200, 1700, 4100, 3700, 1700, 1000] }],
+            "layout": { "width": 800, "height": 600, "title": 'Frecuencia de ingresos por quincena'}
         });
+        
 
-        // GRÁFICA DE BARRAS
-        var trace1 = {
+        /*-----------GASTOS-----------*/
+        // GRÁFICA DE PASTEL (CATEGORÍAS)
+        
+        var data = [{
+          values: [3160, 2410, 1537, 1029, 957, 780, 697, 600, 550, 215, 139],
+          labels: ['Electrónico', 'Transporte', 'Alimentos', 'Educación', 'Otro', 'Salud', 'Cuidado personal', 'Telefonía celular', 'Vestido', 'Entretenimiento', 'Bebidas'],
+          type: 'pie'
+        }];
+        var layout = {
+          title: 'Gasto por categoría',
+          height: 400,
+          width: 500
+        };
+        Plotly.newPlot('gasto_categoria', data, layout);
+
+        // GRÁFICA POR FECHAS (SEMANAL)
+        /*
+        var data = [
+        {
+          x: ['2013-10-04 22:23:00', '2013-11-04 22:23:00', '2013-12-04 22:23:00'],
+          y: [1, 3, 6],
+          type: 'scatter'
+        }
+      ];
+      */
+     // GRÁFICA DE BARRAS
+     var trace1 = {
           type: 'bar',
-          x: [1, 2, 3, 4],
-          y: [5, 10, 2, 8],
+          x: [12090],
+          y: [82],
           marker: {
               color: '#C8A2C8',
               line: {
@@ -137,36 +273,15 @@
         var data = [ trace1 ];
 
         var layout = { 
-          title: 'Cantidad de ingresos',
-          font: {size: 18}
+          title: 'Gasto total',
+          font: {size: 18},
+          
         };
 
         var config = {responsive: true}
+        
 
-        Plotly.newPlot('ingreso_barra', data, layout, config );
-
-        /*-----------GASTOS-----------*/
-        // GRÁFICA DE PASTEL (CATEGORÍAS)
-        var data = [{
-          values: [19, 26, 55],
-          labels: ['Residential', 'Non-Residential', 'Utility'],
-          type: 'pie'
-        }];
-        var layout = {
-          title: 'Gasto por categoría',
-          height: 400,
-          width: 500
-        };
-        Plotly.newPlot('gasto_categoria', data, layout);
-
-        // GRÁFICA POR FECHAS (SEMANAL)
-        var data = [
-        {
-          x: ['2013-10-04 22:23:00', '2013-11-04 22:23:00', '2013-12-04 22:23:00'],
-          y: [1, 3, 6],
-          type: 'scatter'
-        }
-      ];
+        Plotly.newPlot('total_gasto', data, layout, config );
 
       Plotly.newPlot('gasto_semana', data);
   </script>

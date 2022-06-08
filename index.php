@@ -11,8 +11,10 @@
 		
 		$usuario = $_POST['usuario'];
 		$password = $_POST['password'];
+        $idUsuario = $_POST['idUsuario'];
+
 		
-		$sql = "SELECT id, password, nombre, tipo_usuario FROM usuario_login WHERE usuario='$usuario'";
+		$sql = "SELECT id, idUsuario, password, nombre, tipo_usuario FROM usuario_login WHERE usuario='$usuario'";
 		// echo $sql;
 		$resultado = $mysqli->query($sql);
 		$num = $resultado->num_rows;
@@ -28,6 +30,7 @@
 				$_SESSION['id'] = $row['id'];
 				$_SESSION['nombre'] = $row['nombre'];
 				$_SESSION['tipo_usuario'] = $row['tipo_usuario'];
+				$_SESSION['idUsuario'] = $row['idUsuario'];
 				
 				header("Location: principal.php");
 				

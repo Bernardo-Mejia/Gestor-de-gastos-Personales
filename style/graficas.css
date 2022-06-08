@@ -7,9 +7,23 @@
     align-items: center;
 }
 
-#ingreso_frecuencia, #ingreso_barra, #gasto_categoria, #gasto_semana{
+#ingreso_frecuencia, #ingreso_total, #gasto_total, #gasto_categoria, #gasto_semana{
     text-align: center;
     display: inline-block;
+}
+
+#gasto_total{
+    margin: 0px 10px;
+    /* background-color: green; */
+}
+
+.table{
+    text-align: center;
+    /* background-color: red; */
+}
+
+.table table{
+    margin: 0 auto;
 }
 
 @media all and (max-width:1262px){
