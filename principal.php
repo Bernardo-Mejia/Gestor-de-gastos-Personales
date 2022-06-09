@@ -95,17 +95,22 @@
       -->
 
       <!-- PLOTLY -->
+
+      <?php
+        $sql_ingreso = "SELECT SUM(Ingreso),count(*) from ingresos where Usuario_idUsuario = $idUsuario";
+        $resultado_ingreso = mysqli_query($conectar, $sql_ingreso);
+        $mostrar_ingreso = mysqli_fetch_array($resultado_ingreso);
+      ?>
+
+      <?php 
+        if(($mostrar_ingreso['SUM(Ingreso)']) > 0){
+      ?>
       <h3 class="font">Frecuencia de ingresos</h3>
       <div class="ingreso-grafica">
         <div id="ingreso_frecuencia"></div>
         <div class="caja">
           <!-- <h3 class="font">Gastos por semana</h3> -->
           <div id="ingreso_total">
-            <?php
-              $sql_ingreso = "SELECT SUM(Ingreso),count(*) from ingresos where Usuario_idUsuario = $idUsuario";
-              $resultado_ingreso = mysqli_query($conectar, $sql_ingreso);
-              $mostrar_ingreso = mysqli_fetch_array($resultado_ingreso);
-            ?>
             <b>Ingresos totales: $<span><?php echo $mostrar_ingreso['SUM(Ingreso)'] ?></span></b>
             <br>
             <br>
@@ -113,6 +118,11 @@
           </div>
         </div>
       </div>
+      <?php
+        }else{
+          echo "AÚN NO HAY INGRESOS";
+        }
+      ?>
 
         <!-- ÚLTIMO INGRESO -->
       <?php 
@@ -154,8 +164,15 @@
 
     <section id="seccion2" class="section gastos" data-scroll-spy>
       <h2>GASTOS</h2>
+      <?php
+        $sql_ultimoGasto = "SELECT ID, Establecimiento, Fecha, Hora, producto_servicio, Monto, cant, subtotal from gastos where id=(SELECT max(id) from gastos where Usuario_idUsuario=$idUsuario);";
+        $resultado_ultimoGasto = mysqli_query($conectar, $sql_ultimoGasto);
+        $mostrar_ultimoGasto = mysqli_fetch_array($resultado_ultimoGasto);
+      ?>
+      <!--  -->
       <!-- PLOTLY -->
       <!-- <h3 class="font">Gastos por categoría</h3> -->
+      
       <div class="gasto-grafica">
         <div id="gasto_categoria"></div>
         
@@ -167,6 +184,9 @@
               $resultado_gasto = mysqli_query($conectar, $sql_gasto);
               $mostrar_gasto = mysqli_fetch_array($resultado_gasto);
             ?>
+          <?php 
+            if(($mostrar_gasto['SUM(subtotal)']) > 0){
+          ?>
             <b>Gasto total: $<span><?php echo $mostrar_gasto['SUM(subtotal)'] ?></span></b>
             <br>
             <br>
@@ -174,7 +194,12 @@
           </div>
         </div>
       </div>
-
+      <!--  -->
+      <?php
+        }else{
+          echo "AÚN NO HAY GASTOS";
+        }
+      ?>
       <?php 
         if(($mostrar_gasto['SUM(subtotal)']) > 0){
       ?>
@@ -196,11 +221,6 @@
         </thead>
 
         <tbody>
-            <?php
-              $sql_ultimoGasto = "SELECT ID, Establecimiento, Fecha, Hora, producto_servicio, Monto, cant, subtotal from gastos where id=(SELECT max(id) from gastos where Usuario_idUsuario=$idUsuario);";
-              $resultado_ultimoGasto = mysqli_query($conectar, $sql_ultimoGasto);
-              $mostrar_ultimoGasto = mysqli_fetch_array($resultado_ultimoGasto);
-            ?>
           <tr>
             <td><?php echo $mostrar_ultimoGasto['ID'] ?></td>
             <td><?php echo $mostrar_ultimoGasto['Establecimiento'] ?></td>

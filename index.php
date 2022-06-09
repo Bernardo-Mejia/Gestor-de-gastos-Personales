@@ -11,7 +11,7 @@
 		
 		$usuario = $_POST['usuario'];
 		$password = $_POST['password'];
-        $idUsuario = $_POST['idUsuario'];
+        // $idUsuario = $_POST['idUsuario'];
 
 		
 		$sql = "SELECT id, idUsuario, password, nombre, tipo_usuario FROM usuario_login WHERE usuario='$usuario'";
