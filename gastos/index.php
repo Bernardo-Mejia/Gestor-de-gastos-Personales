@@ -38,7 +38,7 @@
                     <div class="row"> 
                         
                         <div class="col-md-3">
-                            <h1>Ingresos de <?php echo $nombre ?></h1>
+                            <h1>Gastos de <?php echo $nombre ?></h1>
                             <!-- <h2><?php echo $idUsuario ?></h2> -->
                                 <form action="insertar.php" method="POST">
 

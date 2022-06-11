@@ -51,8 +51,8 @@
   </button>
   <aside class="panel">
     <nav class="menu">
-      <a href="#" data-scroll-spy>INGRESOS</a>
-      <a href="#" data-scroll-spy>GASTOS</a>
+      <a href="./ingresos/index.php" data-scroll-spy>INGRESOS</a>
+      <a href="./gastos/index.php" data-scroll-spy>GASTOS</a>
       <?php if($tipo_usuario == 2) { ?>
         <!-- <p>aber</p> -->
         <a href="./categorias/index.php" data-scroll-spy>CATEGORÍAS</a>
