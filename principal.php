@@ -20,6 +20,7 @@
 <html lang="es" data-dark>
 
 <head>
+  <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>INTELIGENCIA DE NEGOCIOS</title>
@@ -120,7 +121,7 @@
       </div>
       <?php
         }else{
-          echo "AÚN NO HAY INGRESOS";
+          echo "<h2>AÚN NO HAY INGRESOS</h2>";
         }
       ?>
 
@@ -172,14 +173,7 @@
       <!--  -->
       <!-- PLOTLY -->
       <!-- <h3 class="font">Gastos por categoría</h3> -->
-      
-      <div class="gasto-grafica">
-        <div id="gasto_categoria"></div>
-        
-        <div class="caja">
-          <!-- <h3 class="font">Gastos por semana</h3> -->
-          <div id="gasto_total">
-          <?php
+      <?php
               $sql_gasto = "SELECT SUM(subtotal),count(*) from gastos where Usuario_idUsuario = $idUsuario;";
               $resultado_gasto = mysqli_query($conectar, $sql_gasto);
               $mostrar_gasto = mysqli_fetch_array($resultado_gasto);
@@ -187,6 +181,24 @@
           <?php 
             if(($mostrar_gasto['SUM(subtotal)']) > 0){
           ?>
+      <div class="gasto-grafica">
+
+        <div id="gasto_categoria"></div>
+        <script>
+          function crearCadena(json){
+            let parsed = JSON.parse(json);
+            let arr = [];
+            for(let x in parsed){
+              arr.push(parsed[x]);
+            }
+            return arr;
+          }
+        </script>
+        
+        <div class="caja">
+          <!-- <h3 class="font">Gastos por semana</h3> -->
+          <div id="gasto_total">
+          <!-- //! -->
             <b>Gasto total: $<span><?php echo $mostrar_gasto['SUM(subtotal)'] ?></span></b>
             <br>
             <br>
@@ -197,7 +209,7 @@
       <!--  -->
       <?php
         }else{
-          echo "AÚN NO HAY GASTOS";
+          echo "<h2>AÚN NO HAY GASTOS</h2>";
         }
       ?>
       <?php 
@@ -243,21 +255,58 @@
   </main>
   <button class="scroll-top-btn hidden">&#11014;</button>
 
+  <!-- /*-----------GASTOS-----------*/
+    // GRÁFICA DE PASTEL (CATEGORÍAS)
+    // TODO SELECT categoria Categoría, COUNT(*) Cantidad, SUM(subtotal) Total, Usuario_idUsuario Usuario FROM gastos INNER JOIN categorias ON Categorias_idCategorias = idCategoria where Usuario_idUsuario=1000  GROUP BY(Categorias_idCategorias) ORDER BY(Total) DESC; -->
+  <!-- //* TODO CATEGORÍAS -->
+  <?php
+    $sql_categoria = "SELECT categoria, COUNT(*), SUM(subtotal), Usuario_idUsuario FROM gastos INNER JOIN categorias ON Categorias_idCategorias = idCategoria where Usuario_idUsuario=$idUsuario  GROUP BY(Categorias_idCategorias) ORDER BY(SUM(subtotal)) DESC;";
+    $resultado_categoria = mysqli_query($conectar, $sql_categoria);
+    $values=array();
+    $labels=array();
+    
+    while ($mostrar_categoria = mysqli_fetch_row($resultado_categoria)) {
+      $values[]=$mostrar_categoria[2];
+      $labels[]=$mostrar_categoria[0];
+    }
+    $datosValues=json_encode($values);  
+    $datosLabels=json_encode($labels);
+  ?>
+
+  <!-- //*Ingresos -->
+  <?php
+    $sql_grafica_ingreso = "SELECT * from ingresos where Usuario_idUsuario=$idUsuario;";
+    $resultado_grafica_ingreso = mysqli_query($conectar, $sql_grafica_ingreso);
+    $datosX=array();
+    $datosY=array();
+    
+    while ($mostrar_grafica_ingreso = mysqli_fetch_row($resultado_grafica_ingreso)) {
+      $datosX[]=$mostrar_grafica_ingreso[3]; // *Fecha
+      $datosY[]=$mostrar_grafica_ingreso[2]; // *Cantidad
+    }
+    $datosValuesX=json_encode($datosX);  
+    $datosValuesY=json_encode($datosY);
+  ?>
+
   <script>
         /*-----------INGRESOS-----------*/
-        
+        datosValuesX=crearCadena('<?php echo $datosValuesX ?>');
+        datosValuesY=crearCadena('<?php echo $datosValuesY ?>');
         Plotly.newPlot("ingreso_frecuencia",{
-            "data": [{ "y": [200, 1700, 4100, 3700, 1700, 1000] }],
+            "data": [{ "x":datosValuesX,
+                       "y": datosValuesY}],
             "layout": { "width": 800, "height": 600, "title": 'Frecuencia de ingresos por quincena'}
         });
         
-
-        /*-----------GASTOS-----------*/
-        // GRÁFICA DE PASTEL (CATEGORÍAS)
+      // ! En esta gráfica de pastel no se puede mostrar las categorías con php ya que las llaves estorban
+      // todo: Esta es la gráfica por categoría
         
+        datosValues=crearCadena('<?php echo $datosValues ?>');
+        datosLabels=crearCadena('<?php echo $datosLabels ?>');
+
         var data = [{
-          values: [3160, 2410, 1537, 1029, 957, 780, 697, 600, 550, 215, 139],
-          labels: ['Electrónico', 'Transporte', 'Alimentos', 'Educación', 'Otro', 'Salud', 'Cuidado personal', 'Telefonía celular', 'Vestido', 'Entretenimiento', 'Bebidas'],
+          values: datosValues,
+          labels: datosLabels,
           type: 'pie'
         }];
         var layout = {
@@ -266,6 +315,7 @@
           width: 500
         };
         Plotly.newPlot('gasto_categoria', data, layout);
+      
 
         // GRÁFICA POR FECHAS (SEMANAL)
         /*
