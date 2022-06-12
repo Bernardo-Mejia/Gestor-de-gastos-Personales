@@ -24,7 +24,8 @@
         <title>INGRESOS</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../style/estilos_categoria.css">
+        <link rel="shortcut icon" href="./../assets/favicon1.png" type="image/x-icon">
+        <link rel="stylesheet" href="../style/estilos_crud.css">
         <!-- partículas -->
         <link rel="stylesheet" href="../scripts/particles/css/estilos.css">
         <script src="../scripts/particles/js/app_c.js"></script> 

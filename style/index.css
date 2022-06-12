@@ -4,3 +4,7 @@ h4{
     color: #D8000C;
     background-color: rgba(255, 210, 210, 1);
 }
+
+body{
+    background-color: red;
+}
