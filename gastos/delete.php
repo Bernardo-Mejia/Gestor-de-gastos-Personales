@@ -8,9 +8,9 @@ if(!isset($_SESSION['id'])){
 
 $con=conectar();
 
-$idIngreso=$_GET['id'];
+$ID_gasto=$_GET['id'];
 
-$sql="DELETE FROM ingresos WHERE idIngreso='$idIngreso'";
+$sql="DELETE FROM gastos WHERE ID_gasto='$ID_gasto'";
 $query=mysqli_query($con,$sql);
 
     if($query){

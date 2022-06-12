@@ -44,45 +44,46 @@
                                     <input type="number" class="form-control mb-3" name="ID_gasto" placeholder="ID del gasto" required>
                                     <label for="select_comp">Comprobante</label>
                                     <select name="Tipo_comp_idTipo_comp" class="form-control" id="select_comp">
-                                        <option disabled>Tipo de comprobante</option>
-                                        <option value="1">Ticket</option>
-                                        <option value="2">Boleto</option>
-                                        <option value="3">Nota de remisión</option>
-                                        <option value="4">Factura</option>
-                                        <option value="5">Recibo</option>
-                                        <option value="6">N/E</option>
+                                        <option selected="selected" disabled>Elija un Tipo de comprobante</option>
+                                        <option value="1">1.- Ticket</option>
+                                        <option value="2">2.- Boleto</option>
+                                        <option value="3">3.- Nota de remisión</option>
+                                        <option value="4">4.- Factura</option>
+                                        <option value="5">5.- Recibo</option>
+                                        <option value="6">6.- N/E</option>
                                     </select>
                                     <!-- <br> -->
                                     <label for="select_cat">Categoría</label>
                                     <select name="Categorias_idCategorias" class="form-control" id="select_cat">
-                                        <option disabled>Categoría</option>
-                                        <option value="1">Alimentos</option>
-                                        <option value="2">Bebidas</option>
-                                        <option value="3">Vestido</option>
-                                        <option value="4">Transporte</option>
-                                        <option value="5">Entretenimiento</option>
-                                        <option value="6">Telefonía celular</option>
-                                        <option value="7">Educación</option>
-                                        <option value="8">Salud</option>
-                                        <option value="9">Electrónico</option>
-                                        <option value="10">Cuidado personal</option>
-                                        <option value="11">Otro</option>
+                                        <option selected="selected" disabled>Elija una Categoría</option>
+                                        <option value="1">1.- Alimentos</option>
+                                        <option value="2">2.- Bebidas</option>
+                                        <option value="3">3.- Vestido</option>
+                                        <option value="4">4.- Transporte</option>
+                                        <option value="5">5.- Entretenimiento/diversión</option>
+                                        <option value="6">6.- Telefonía celular</option>
+                                        <option value="7">7.- Educación</option>
+                                        <option value="8">8.- Salud</option>
+                                        <option value="9">9.- Electrónico</option>
+                                        <option value="10">10.- Cuidado personal</option>
+                                        <option value="11">11.- Otro</option>
                                     </select>
                                     <!-- <br> -->
                                     <label for="select_cat">Forma de pago</label>
                                     <select name="forma_pago" id="select" class="form-control">
-                                        <option disabled>Elije una forma de pago</option>
-                                        <option value="1">Efectivo</option>
-                                        <option value="2">Tarjeta de crédito</option>
-                                        <option value="3">Tarjeta de débito</option>
+                                        <option selected="selected" disabled>Elije una forma de pago</option>
+                                        <option value="1">1.- Efectivo</option>
+                                        <option value="2">2.- Tarjeta de crédito</option>
+                                        <option value="3">3.- Tarjeta de débito</option>
                                     </select>
                                     <!-- <br> -->
                                     <br>
+                                    <input type="text" class="form-control mb-3" name="Establecimiento" placeholder="Nombre del Establecimiento" required>
                                     <input type="number" class="form-control mb-3" name="IDGasto" placeholder="ID del gasto" required>
                                     <input type="text" class="form-control mb-3" name="producto_servicio" placeholder="Producto o servicio" required>
                                     <input type="text" class="form-control mb-3" name="Monto" placeholder="Monto" required>
                                     <input type="text" class="form-control mb-3" name="cant" placeholder="Cantidad" required>
-                                    <input type="text" class="form-control mb-3" name="Subtotal" placeholder="Subtotal" required>
+                                    <!-- <input type="text" class="form-control mb-3" name="Subtotal" placeholder="Subtotal" required> -->
                                     
                                     <input type="submit" class="btn btn-primary">
                                 </form>

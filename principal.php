@@ -350,10 +350,6 @@
 
         var config = {responsive: true}
         
-
-        Plotly.newPlot('total_gasto', data, layout, config );
-
-      Plotly.newPlot('gasto_semana', data);
   </script>
 </body>
   

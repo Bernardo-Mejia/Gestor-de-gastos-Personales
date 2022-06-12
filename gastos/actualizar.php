@@ -13,7 +13,7 @@
 
     $id=$_GET['id'];
 
-    $sql="SELECT * FROM ingresos WHERE idIngreso='$id'";
+    $sql="SELECT * FROM gastos WHERE ID_gasto='$id'";
     $query=mysqli_query($con,$sql);
 
     $row=mysqli_fetch_array($query);
@@ -34,11 +34,13 @@
                 <div class="container mt-5">
                     <form action="update.php" method="POST">
                     
-                                <input type="hidden" name="idIngreso" value="<?php echo $row['idIngreso']  ?>">
-                                
-                                <input type="text" class="form-control mb-3" name="Ingreso" placeholder="Valor del ingreso" value="<?php echo $row['Ingreso']  ?>">
-                                <input type="text" class="form-control mb-3" name="Fecha" placeholder="Nueva Fecha" value="<?php echo $row['Fecha']  ?>">
-                                <input type="text" class="form-control mb-3" name="Hora" placeholder="Nueva Hora" value="<?php echo $row['Hora']  ?>">
+                                <input type="hidden" name="ID_gasto" value="<?php echo $row['ID_gasto']  ?>">
+
+                                    <input type="text" class="form-control mb-3" name="Establecimiento" placeholder="Nombre del Establecimiento" value="<?php echo $row['Establecimiento']?>" required>
+                                    <input type="number" class="form-control mb-3" name="IDGasto" placeholder="ID del gasto" value="<?php echo $row['IDGasto']?>" required>
+                                    <input type="text" class="form-control mb-3" name="producto_servicio" placeholder="Producto o servicio" value="<?php echo $row['producto_servicio']?>" required>
+                                    <input type="text" class="form-control mb-3" name="Monto" placeholder="Monto" value="<?php echo $row['Monto']?>" required>
+                                    <input type="text" class="form-control mb-3" name="cant" placeholder="Cantidad" value="<?php echo $row['cant']?>" required>
                                 
                             <input type="submit" class="btn btn-primary btn-block" value="Actualizar">
                     </form>

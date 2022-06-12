@@ -8,18 +8,28 @@ $idUsuario = $_SESSION['idUsuario'];
 
 $con=conectar();
 
-// $idUsuario = $_SESSION['idUsuario'];
+// TODO: Para insertar automáticamente el subtotal (Monto*cant)
+// $ID_Zapato = $_POST['ID_Zapato'];
+// $ID_Vendedor = $_POST['ID_Vendedor'];
+// $ID_Cliente = $_POST['ID_Cliente'];
+// $Cantidad = $_POST['Cantidad'];
+// $Precio = $_POST['Precio'];
+// $ins = $con -> query("INSERT INTO ventas(ID_Venta,ID_Zapato,ID_Vendedor,ID_Cliente,Fecha,Hora,Cantidad,Precio,Subtotal) VALUES('','$ID_Zapato','$ID_Vendedor','$ID_Cliente',curdate(),curtime(),'$Cantidad', '$Precio', $Cantidad*$Precio)");
+// TODO
 
-$idIngreso=$_POST['idIngreso'];
-// $Usuario_idUsuario=$_POST['Usuario_idUsuario'];
-$Ingreso=$_POST['Ingreso'];
-// $Fecha=$_POST['Fecha'];
-// $Hora=$_POST['Hora'];
-$Subtotal=$_POST['Subtotal'];
-$Saldo=$_POST['Saldo'];
+
+$ID_gasto=$_POST['ID_gasto'];
+$Tipo_comp_idTipo_comp=$_POST['Tipo_comp_idTipo_comp'];
+$Categorias_idCategorias=$_POST['Categorias_idCategorias'];
+$forma_pago=$_POST['forma_pago'];
+$Establecimiento=$_POST['Establecimiento'];
+$IDGasto=$_POST['IDGasto'];
+$producto_servicio=$_POST['producto_servicio'];
+$Monto=$_POST['Monto'];
+$cant=$_POST['cant'];
 
 // 
-$sql="INSERT INTO ingresos VALUES('$idIngreso','$idUsuario', '$Ingreso', curdate(), curtime(), '$Subtotal', '$Saldo')";
+$sql="INSERT INTO gastos VALUES('$ID_gasto', '$Tipo_comp_idTipo_comp', '$Categorias_idCategorias', '$idUsuario', '$forma_pago', '$Establecimiento', '$IDGasto', curdate(), curtime(), '$producto_servicio', '$Monto', '$cant', $cant*$Monto)";
 $query= mysqli_query($con,$sql);
 
 if($query){
