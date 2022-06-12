@@ -26,7 +26,7 @@
         <title>Usuarios</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="./style/estilos_categoria.css" rel="stylesheet">
+        <link rel="stylesheet" href="../style/estilos_categoria.css">
         <!-- partículas -->
         <link rel="stylesheet" href="../scripts/particles/css/estilos.css">
         <script src="../scripts/particles/js/app_c.js"></script> 
@@ -35,8 +35,9 @@
         
     </head>
     <body>
-        <div class="container mt-5">
-            <div id="particles-js"></div>
+        <div id="particles-js"></div>
+        <div class="pb-5"></div>
+        <div class="container">
                     <div class="row"> 
                         
                         <div class="col-md-3">

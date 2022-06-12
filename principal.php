@@ -12,7 +12,6 @@
 	$tipo_usuario = $_SESSION['tipo_usuario'];
   $idUsuario = $_SESSION['idUsuario'];
 	
-	// $sql = "select * from ingresos where idIngreso=(SELECT max(idingreso) from ingresos where Usuario_idUsuario=1000)";
   
 ?>
 
@@ -26,8 +25,8 @@
   <title>INTELIGENCIA DE NEGOCIOS</title>
   <!-- bootstrap -->
   <!-- <link href="./style/b_styles.css" rel="stylesheet" /> -->
-  <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+  <!-- <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" /> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script> -->
   <!--  -->
   <script src="Scripts/index.js" type="module"></script>
   <!-- PLOTLY -->
@@ -66,37 +65,6 @@
   <main>
     <section id="seccion1" class="section" data-scroll-spy>
       <h2>INGRESOS</h2>
-
-      <!-- 
-      <div class="ultimo">
-        <h3>ÚLTIMO INGRESO</h3>
-
-        <table class="table">
-        <tr>
-            <th>ID de ingreso</th>
-            <th>ID de usuario</th>
-            <th>Ingreso</th>
-            <th>Fecha</th>
-            <th>Hora</th>
-            <th>Saldo anterior</th>
-            <th>Saldo</th>
-        </tr>
-        <tbody>
-          <th>2020</th>
-          <th>1000</th>
-          <th>500.00</th>
-          <th>2022-05-31</th>
-          <th>12:00:00</th>
-          <th>26.000</th>
-          <th>526.000</th>
-        </tbody>
-        </table>
-        
-      </div>
-      -->
-
-      <!-- PLOTLY -->
-
       <?php
         $sql_ingreso = "SELECT SUM(Ingreso),count(*) from ingresos where Usuario_idUsuario = $idUsuario";
         $resultado_ingreso = mysqli_query($conectar, $sql_ingreso);
