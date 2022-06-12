@@ -166,7 +166,7 @@
     <section id="seccion2" class="section gastos" data-scroll-spy>
       <h2>GASTOS</h2>
       <?php
-        $sql_ultimoGasto = "SELECT ID, Establecimiento, Fecha, Hora, producto_servicio, Monto, cant, subtotal from gastos where id=(SELECT max(id) from gastos where Usuario_idUsuario=$idUsuario);";
+        $sql_ultimoGasto = "SELECT ID_gasto, Establecimiento, Fecha, Hora, producto_servicio, Monto, cant, subtotal from gastos where ID_gasto=(SELECT max(ID_gasto) from gastos where Usuario_idUsuario=$idUsuario);";
         $resultado_ultimoGasto = mysqli_query($conectar, $sql_ultimoGasto);
         $mostrar_ultimoGasto = mysqli_fetch_array($resultado_ultimoGasto);
       ?>
@@ -234,7 +234,7 @@
 
         <tbody>
           <tr>
-            <td><?php echo $mostrar_ultimoGasto['ID'] ?></td>
+            <td><?php echo $mostrar_ultimoGasto['ID_gasto'] ?></td>
             <td><?php echo $mostrar_ultimoGasto['Establecimiento'] ?></td>
             <td><?php echo $mostrar_ultimoGasto['Fecha'] ?></td>
             <td><?php echo $mostrar_ultimoGasto['Hora'] ?></td>
