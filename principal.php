@@ -37,13 +37,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css">
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="./style/graficas.css">
+  <!-- animatedCSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 
 <body data-dark>
-  <header class="header">
+  <header class="header animate__animated animate__fadeInDown">
     <h1>SISTEMA DE CONTROL DE GASTOS PERSONALES</h1>
   </header>
-  <button class="panel-btn hamburger hamburger--elastic" type="button">
+  <button class="panel-btn hamburger hamburger--elastic animate__animated animate__backInLeft" type="button">
     <span class="hamburger-box">
       <span class="hamburger-inner"></span>
     </span>
@@ -76,7 +78,7 @@
       ?>
       <h3 class="font">Frecuencia de ingresos</h3>
       <div class="ingreso-grafica">
-        <div id="ingreso_frecuencia"></div>
+        <div id="ingreso_frecuencia" class="animate__animated animate__backInLeft"></div>
         <div class="caja">
           <!-- <h3 class="font">Gastos por semana</h3> -->
           <div id="ingreso_total">
@@ -151,7 +153,7 @@
           ?>
       <div class="gasto-grafica">
 
-        <div id="gasto_categoria"></div>
+        <div id="gasto_categoria" class="animate__animated animate__backInRight"></div>
         <script>
           function crearCadena(json){
             let parsed = JSON.parse(json);

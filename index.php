@@ -75,6 +75,8 @@
         <!-- bootstrap -->
         <link href="./style/b_styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- animatedCSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     </head>
     <body class="bg-primary">
         <!-- ID Particles.js -->
@@ -87,7 +89,7 @@
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="animate__animated animate__fadeInDown card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Inicio de sesión</h3></div>
                                     <div class="card-body">
                                         <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
@@ -111,7 +113,7 @@
                     </div>
                 </main>
             </div>
-            <div id="layoutAuthentication_footer">
+            <div id="layoutAuthentication_footer" class="animate__animated animate__fadeInUp">
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">

@@ -10,6 +10,7 @@
 #ingreso_frecuencia, #ingreso_total, #gasto_total, #gasto_categoria, #gasto_semana{
     text-align: center;
     display: inline-block;
+    background-color: rgba(255, 255, 255, 0);
 }
 
 #gasto_total{
