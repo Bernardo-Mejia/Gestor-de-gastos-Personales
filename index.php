@@ -80,7 +80,7 @@
     </head>
     <body class="bg-primary">
         <!-- ID Particles.js -->
-        <div id="particles-js"></div>
+        <div id="particles-js" class="animate__animated animate__fadeIn"></div>
         
         
         <div id="layoutAuthentication">

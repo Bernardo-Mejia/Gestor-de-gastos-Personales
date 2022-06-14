@@ -31,12 +31,14 @@
         <script src="../scripts/particles/js/app_c.js"></script> 
           
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         
     </head>
     <body>
-        <div id="particles-js"></div>
+        <div id="particles-js" class="animate__animated animate__fadeIn"></div>
         <div class="pb-5"></div>
-        <div class="container">
+        <div class="container animate__animated">
                     <div class="row"> 
                         
                         <div class="col-md-3">

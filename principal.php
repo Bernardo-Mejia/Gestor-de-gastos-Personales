@@ -11,6 +11,9 @@
 	$nombre = $_SESSION['nombre'];
 	$tipo_usuario = $_SESSION['tipo_usuario'];
   $idUsuario = $_SESSION['idUsuario'];
+
+  $sql_usuario = "SELECT usuarios.idUsuario, Nombre_Usuario, nombre, usuario_login.tipo_usuario,  from usuario_login inner join usuarios ON usuario_login.idUsuario = $idUsuario;";
+
 	
   
 ?>
@@ -45,7 +48,7 @@
   <header class="header animate__animated animate__fadeInDown">
     <h1>SISTEMA DE CONTROL DE GASTOS PERSONALES</h1>
   </header>
-  <button class="panel-btn hamburger hamburger--elastic animate__animated animate__backInLeft" type="button">
+  <button class="panel-btn hamburger hamburger--elastic animate__animated animate__fadeIn" type="button">
     <span class="hamburger-box">
       <span class="hamburger-inner"></span>
     </span>
